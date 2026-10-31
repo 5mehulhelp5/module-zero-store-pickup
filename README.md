@@ -80,6 +80,8 @@ sources instead of one quantity).
 search, a map only when opened) and an order picked up in store, refused
 without a store.
 
+What changed in each release: [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
 OSL-3.0 or AFL-3.0, your choice: see `NOTICE.md`.

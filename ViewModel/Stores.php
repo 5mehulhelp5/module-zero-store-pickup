@@ -102,7 +102,8 @@ class Stores implements ArgumentInterface
 
     public function query(): string
     {
-        return mb_substr(trim((string) $this->request->getParam('q')), 0, 80);
+        $qParam = $this->request->getParam('q');
+        return mb_substr(trim(is_scalar($qParam) ? (string) $qParam : ''), 0, 80);
     }
 
     public function title(): string

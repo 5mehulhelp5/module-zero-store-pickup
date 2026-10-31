@@ -41,7 +41,9 @@ class PickupValidator implements PlaceOrderValidatorInterface
         if (($request['shipping_method'] ?? '') !== self::RATE) {
             return;
         }
-        $location = $this->locations->forQuoteByCode($quote, trim((string) ($request[self::FIELD] ?? '')));
+        $code = $request[self::FIELD] ?? '';
+        // An array counts as no store chosen.
+        $location = $this->locations->forQuoteByCode($quote, is_scalar($code) ? trim((string) $code) : '');
         if (!$location) {
             throw new LocalizedException(__('Choose the store to pick your order up from.'));
         }
